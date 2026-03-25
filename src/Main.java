@@ -60,6 +60,7 @@ void main() {
         System.out.println("Result: " + math.sum(da, db));
 
     } else if (choice == 3) {
+        scanner.nextLine(); // We add this line because without, the code get confuse and will not take in account the first input
         System.out.print("Enter first String: ");
         sa = scanner.nextLine();
         System.out.print("Enter second String: ");
