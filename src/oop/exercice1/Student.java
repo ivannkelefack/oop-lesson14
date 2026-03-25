@@ -48,6 +48,6 @@ public class Student {
     //We set up the toString method
     @Override
     public String toString() {
-        return "Student{name = '" + name + "', age = " + age + ", Average Grade = " + averageGrade + "}";
+        return "Student: name = '" + name + "', age = " + age + ", Average Grade = " + averageGrade + ".";
     }
 }
