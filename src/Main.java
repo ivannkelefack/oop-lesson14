@@ -44,7 +44,7 @@ void main() {
     String sa = "";
     String sb = "";
 
-    // We use a if, else statement so it can apply each method propreties
+    // We use if, else statement so it can apply each method propreties
     if (choice == 1) {
         System.out.print("Enter first int: ");
         a = scanner.nextInt();
