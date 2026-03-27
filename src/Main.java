@@ -6,6 +6,7 @@ import oop.exercice3.Dog;
 import oop.exercice4.Circle;
 import oop.exercice4.Drawable;
 import oop.exercice4.Rectangle;
+import oop.exercice6.TextProcessor;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -23,6 +24,7 @@ void main() {
     System.out.println("3 = Exercise 3 - Animals");
     System.out.println("4 = Exercise 4 - Drawable");
     System.out.println("5 = Exercise 5 - Sort + Equals");
+    System.out.println("6 = Exercise 6 - Text Processor");
     System.out.print("Your choice: ");
     int exercise = scanner.nextInt();
     scanner.nextLine();
@@ -37,6 +39,8 @@ void main() {
         runExercice4(scanner);
     } else if (exercise == 5) {
         runExercise5(scanner);
+    } else if (exercise == 6) {
+        runExercise6();
     } else {
         System.out.println("Invalid choice.");
     }
@@ -254,4 +258,15 @@ void runExercise5(Scanner scanner) {
             }
         }
     }
+}
+
+// Exercise 6
+void runExercise6() {
+    TextProcessor processor = new TextProcessor();
+
+    // processText() handles the scanner internally and returns the full summary
+    String summary = processor.processText();
+
+    System.out.println("\n--- Summary ---");
+    System.out.println(summary);
 }
