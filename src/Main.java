@@ -8,6 +8,7 @@ import oop.exercice4.Drawable;
 import oop.exercice4.Rectangle;
 import oop.exercice6.TextProcessor;
 import oop.exercice7.Inventory;
+import oop.exercice8.SavingsAccount;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -27,6 +28,7 @@ void main() {
     System.out.println("5 = Exercise 5 - Sort + Equals");
     System.out.println("6 = Exercise 6 - Text Processor");
     System.out.println("7 = Exercise 7 - Inventory");
+    System.out.println("8 = Exercise 8 - Bank System");
     System.out.print("Your choice: ");
     int exercise = scanner.nextInt();
     scanner.nextLine();
@@ -45,6 +47,8 @@ void main() {
         runExercise6();
     } else if (exercise == 7) {
         runExercise7(scanner);
+    } else if (exercise == 8) {
+        runExercise8(scanner);
     } else {
         System.out.println("Invalid choice.");
     }
@@ -279,4 +283,69 @@ void runExercise6() {
 void runExercise7(Scanner scanner) {
     Inventory inventory = new Inventory();
     inventory.run(scanner);
+}
+
+// Exercise 8
+void runExercise8(Scanner scanner) {
+    SavingsAccount account = null;
+
+    while (true) {
+        System.out.println("\n--- Bank Menu ---");
+        System.out.println("1 = Create account");
+        System.out.println("2 = Deposit / Withdraw");
+        System.out.println("3 = Show balance and interest");
+        System.out.println("4 = Exit");
+        System.out.print("Your choice: ");
+        int choice = scanner.nextInt();
+        scanner.nextLine();
+
+        if (choice == 1) {
+            System.out.print("Enter owner name: ");
+            String owner = scanner.nextLine();
+            System.out.print("Enter initial balance: ");
+            double balance = scanner.nextDouble();
+            System.out.print("Enter interest rate (%): ");
+            double rate = scanner.nextDouble();
+            scanner.nextLine();
+            account = new SavingsAccount(owner, balance, rate);
+            System.out.println("Account created: " + account);
+
+        } else if (choice == 2) {
+            if (account == null) {
+                System.out.println("No account found. Please create one first.");
+                continue;
+            }
+            System.out.println("1 = Deposit, 2 = Withdraw");
+            int action = scanner.nextInt();
+            System.out.print("Enter amount: ");
+            double amount = scanner.nextDouble();
+            scanner.nextLine();
+
+            // We use try-catch to handle the IllegalArgumentException from withdraw
+            try {
+                if (action == 1) {
+                    account.deposit(amount);
+                } else {
+                    account.withdraw(amount);
+                }
+            } catch (IllegalArgumentException e) {
+                System.out.println("Error: " + e.getMessage());
+            }
+
+        } else if (choice == 3) {
+            if (account == null) {
+                System.out.println("No account found. Please create one first.");
+                continue;
+            }
+            System.out.println(account);
+            System.out.println("Interest earned: " + account.calculateInterest());
+
+        } else if (choice == 4) {
+            System.out.println("Exiting bank system.");
+            break;
+
+        } else {
+            System.out.println("Invalid choice.");
+        }
+    }
 }
