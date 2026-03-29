@@ -7,6 +7,7 @@ import oop.exercice4.Circle;
 import oop.exercice4.Drawable;
 import oop.exercice4.Rectangle;
 import oop.exercice6.TextProcessor;
+import oop.exercice7.Inventory;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -25,6 +26,7 @@ void main() {
     System.out.println("4 = Exercise 4 - Drawable");
     System.out.println("5 = Exercise 5 - Sort + Equals");
     System.out.println("6 = Exercise 6 - Text Processor");
+    System.out.println("7 = Exercise 7 - Inventory");
     System.out.print("Your choice: ");
     int exercise = scanner.nextInt();
     scanner.nextLine();
@@ -41,6 +43,8 @@ void main() {
         runExercise5(scanner);
     } else if (exercise == 6) {
         runExercise6();
+    } else if (exercise == 7) {
+        runExercise7(scanner);
     } else {
         System.out.println("Invalid choice.");
     }
@@ -269,4 +273,10 @@ void runExercise6() {
 
     System.out.println("\n--- Summary ---");
     System.out.println(summary);
+}
+
+// Exercise 7
+void runExercise7(Scanner scanner) {
+    Inventory inventory = new Inventory();
+    inventory.run(scanner);
 }
